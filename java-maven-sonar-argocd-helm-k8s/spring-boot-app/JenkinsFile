@@ -2,7 +2,7 @@ pipeline{
     agent any
     
     environment {
-        APP_NAME = "java-maven-sonar-argocd-helm-k8s"
+        APP_NAME = "java-maven-sonar-argocd-helm-k8s/spring-boot-app"
         DOCKER_USER = "harshmandhu"
         DOCKER_PASS = 'docker-cred'
         IMAGE_NAME = "${DOCKER_USER}" + "/" + "${APP_NAME}"
