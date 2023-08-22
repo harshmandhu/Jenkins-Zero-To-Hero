@@ -1,7 +1,5 @@
 pipeline{
-    agent{
-        label "any"
-    }
+    agent any
     
     environment {
         APP_NAME = "java-maven-sonar-argocd-helm-k8s"
