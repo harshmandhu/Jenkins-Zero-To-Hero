@@ -2,10 +2,7 @@ pipeline{
     agent{
         label "any"
     }
-    tools {
-        jdk 'Java11'
-        maven 'Maven3'
-    }
+    
     environment {
         APP_NAME = "java-maven-sonar-argocd-helm-k8s"
         DOCKER_USER = "harshmandhu"
