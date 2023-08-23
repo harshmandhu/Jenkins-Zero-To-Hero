@@ -28,6 +28,15 @@ pipeline{
             }
 
         }
+        stage("Reading Pom"){
+            steps {
+                 IMAGE = readMavenPom().getArtifactId()
+                 VERSION = readMavenPom().getVersion()
+               
+            }
+
+        }
+
 
         stage("Build Application"){
             steps {
