@@ -7,13 +7,13 @@ pipeline{
         DOCKER_PASS = 'docker-cred'
         IMAGE_NAME = "${DOCKER_USER}" + "/" + "${APP_NAME}"
         IMAGE_TAG = "${BUILD_NUMBER}"
-
+    }
+    
     tools {
         jdk 'java11'
         maven 'maven3'
     }
 
-    }
     stages{
         stage("Cleanup Workspace"){
             steps {
