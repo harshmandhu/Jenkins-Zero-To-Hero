@@ -8,6 +8,10 @@ pipeline{
         IMAGE_NAME = "${DOCKER_USER}" + "/" + "${APP_NAME}"
         IMAGE_TAG = "${BUILD_NUMBER}"
 
+    tools {
+        jdk 'java11'
+        maven 'maven3'
+    }
 
     }
     stages{
@@ -17,22 +21,29 @@ pipeline{
             }
 
         }
-    
-        stage("Checkout from SCM"){
+
+        stage("Build Application"){
             steps {
-                git branch: 'main', credentialsId: 'github-jenkins', url: 'https://github.com/harshmandhu/Jenkins-Zero-To-Hero'
+                sh "mvn clean package"
+            }
+
+        }
+    
+       
+        stage("Test Application"){
+            steps {
+                sh "mvn test"
             }
 
         }
 
     
-        
-       
+    
 
         stage("Build & Push Docker Image") {
             steps {
                 script {
-                    docker.withRegistry('',DOCKER_PASS) {
+                    docker.withRegistry('', DOCKER_PASS) {
                         docker_image = docker.build "${IMAGE_NAME}"
                     }
 
