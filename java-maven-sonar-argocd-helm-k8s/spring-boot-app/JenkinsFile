@@ -10,7 +10,7 @@ pipeline{
     }
 
     tools {
-        jdk 'java11'
+        jdk 'java17'
         maven 'maven3'
     }
 
@@ -24,7 +24,7 @@ pipeline{
 
         stage("Checkout from SCM"){
             steps {
-                git branch: 'main', credentialsId: 'github-cred', url: 'https://github.com/harshmandhu/Jenkins-Zero-To-Hero'
+                git branch: 'main', credentialsId: 'github-token', url: 'https://github.com/harshmandhu/Jenkins-Zero-To-Hero'
             }
 
         }
