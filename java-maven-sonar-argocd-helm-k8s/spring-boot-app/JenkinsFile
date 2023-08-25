@@ -9,10 +9,6 @@ pipeline{
         IMAGE_TAG = "${BUILD_NUMBER}"
     }
 
-    tools {
-        jdk 'java17'
-        maven 'maven3'
-    }
 
     stages{
         stage("Cleanup Workspace"){
@@ -30,22 +26,6 @@ pipeline{
         }
     
 
-
-        stage("Build Application"){
-            steps {
-               sh "cd java-maven-sonar-argocd-helm-k8s/spring-boot-app" 
-               sh "mvn clean package"
-            }
-
-        }
-    
-       
-        stage("Test Application"){
-            steps {
-                sh "mvn test"
-            }
-
-        }
 
     
     
